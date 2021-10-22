@@ -1,0 +1,6 @@
+
+.env
+*.pyc
+*.json
+testing
+base
