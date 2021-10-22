@@ -42,8 +42,9 @@ class AdRemover(object):
 
         The object passed to this method will be modified in place."""
         print("dd")
-        # for elem in tree.xpath(self.xpath_query):
-        #     elem.getparent().remove(elem)
+        # TODO: Find Error
+        for elem in tree.xpath(self.xpath_query):
+            elem.getparent().remove(elem)
         g = tree.xpath(self.xpath_query)
         print(g)
         print("DDs")
