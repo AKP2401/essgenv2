@@ -4,4 +4,5 @@
 *.json
 testing
 base
+venv
 .vscode
