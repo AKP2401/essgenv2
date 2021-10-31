@@ -41,5 +41,6 @@ class Run():
 
 if __name__=="__main__":
     Topic = input("Enter the Topic name: ")
+    Num_Pg = int(input("Enter the number of pages to be scraped: "))
     RR = Run()
-    RR.run(Topic, 10)
+    RR.run(Topic, Num_Pg)
