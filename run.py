@@ -33,7 +33,7 @@ class Run():
         print("Scraping...")
         for i in tqdm.tqdm(range(limit)):
             self.paragraph += self.__scrape(links[i])
-        with open("./out/intermediate.txt", 'w') as f:
+        with open("./out/intermediate.txt", 'w', encoding="utf-8") as f:
             f.write(self.paragraph)
             f.close()
         summ = Summarizer()
@@ -41,6 +41,5 @@ class Run():
 
 if __name__=="__main__":
     Topic = input("Enter the Topic name: ")
-    Num_Pg = int(input("Enter the number of pages to be scraped: "))
     RR = Run()
-    RR.run(Topic, Num_Pg)
+    RR.run(Topic, 10)

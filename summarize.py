@@ -8,7 +8,7 @@ class Summarizer:
 
     def __init__(self) -> None:
         article = None
-        with open("./out/intermediate.txt", 'r') as f:
+        with open("./out/intermediate.txt", 'r', encoding="utf-8") as f:
             filedata = f.readlines()
             article = filedata[0].split(". ")
             f.close()
@@ -63,10 +63,10 @@ class Summarizer:
         ranked_sentence = sorted(((scores[i], s) for i,s in enumerate(self.sentences)), reverse=True)
         print("Indexes of top ranked sent are", ranked_sentence)
 
-        for i in range(5):
+        for i in range(len(ranked_sentence)):
             summarize_text.append(" ".join(ranked_sentence[i][1]))
 
-        with open("./out/Output.txt", "w") as f:
+        with open("./out/Output.txt", "w", encoding="utf-8") as f:
             f.write(". ".join(summarize_text))
 
 
