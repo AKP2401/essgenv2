@@ -33,7 +33,7 @@ class Run():
         print("Scraping...")
         for i in tqdm.tqdm(range(limit)):
             self.paragraph += self.__scrape(links[i])
-        with open("./out/intermidiate.txt", 'w') as f:
+        with open("./out/intermediate.txt", 'w') as f:
             f.write(self.paragraph)
             f.close()
         summ = Summarizer()
