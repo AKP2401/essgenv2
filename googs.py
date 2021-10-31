@@ -13,7 +13,7 @@ class Googs:
             raise ValueError("Limit is 5 to 10")
 
         resource = build('customsearch','v1',developerKey=self.api_key).cse()
-        result = resource.list(q=topic, cx=self.cx).execute()
+        result = resource.list(q=f"Essay about {topic}", cx=self.cx).execute()
 
         links = []
         for i in range(limit):
