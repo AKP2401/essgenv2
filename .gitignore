@@ -6,3 +6,4 @@ testing
 base
 venv
 .vscode
+out
