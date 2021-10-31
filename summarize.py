@@ -8,7 +8,7 @@ class Summarizer:
 
     def __init__(self) -> None:
         article = None
-        with open("./out/dummy.txt", 'r') as f:
+        with open("./out/intermediate.txt", 'r') as f:
             filedata = f.readlines()
             article = filedata[0].split(". ")
             f.close()

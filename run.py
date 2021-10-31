@@ -30,13 +30,16 @@ class Run():
     def run(self, topic:str, limit:int=5):
         links = Googs().search(topic=topic, limit=limit)
         print("Fetch Done")
+        print("Scraping...")
         for i in tqdm.tqdm(range(limit)):
             self.paragraph += self.__scrape(links[i])
-        with open("./out/dummy.txt", 'w') as f:
+        with open("./out/intermidiate.txt", 'w') as f:
             f.write(self.paragraph)
             f.close()
         summ = Summarizer()
-        
+        summ.gen_summary()
 
 if __name__=="__main__":
-    Run().run("Lion", 1)
+    Topic = input("Enter the Topic name: ")
+    Num_Pg = int(input("Enter the number of pages to be scraped: "))
+    RR = Run()

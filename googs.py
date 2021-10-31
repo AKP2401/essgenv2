@@ -9,8 +9,8 @@ class Googs:
         self.cx = os.getenv('cse')
 
     def search(self, topic:str, limit:int):
-        if limit > 10:
-            raise ValueError("Limit is 5 to 10")
+        if limit > 10 and limit < 1:
+            raise ValueError("Limit is 1 to 10")
 
         resource = build('customsearch','v1',developerKey=self.api_key).cse()
         result = resource.list(q=f"Essay about {topic}", cx=self.cx).execute()
@@ -19,10 +19,3 @@ class Googs:
         for i in range(limit):
             links.append(result['items'][i]['link'])
         return links
-
-
-if __name__ == "__main__":
-    Obj = Googs()
-    print(Obj.search("Python", 5))
-else:
-    print("Import Success")
