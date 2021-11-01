@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
 import numpy as np
 import networkx as nx
+from tqdm import tqdm
 
 class Summarizer:
 
@@ -62,8 +63,10 @@ class Summarizer:
 
         ranked_sentence = sorted(((scores[i], s) for i,s in enumerate(self.sentences)), reverse=True)
         print("Indexes of top ranked sent are", ranked_sentence)
+        print(f"Enter the number of top results to be summarized\nNote: The bigger the number more the content but lesser the accuracy\nMaximum is {len(ranked_sentence)}:", end='')
+        top_n = int(input())
 
-        for i in range(len(ranked_sentence)):
+        for i in tqdm(range(10)):
             summarize_text.append(" ".join(ranked_sentence[i][1]))
 
         with open("./out/Output.txt", "w", encoding="utf-8") as f:

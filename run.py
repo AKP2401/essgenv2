@@ -12,7 +12,6 @@ class Run():
     def __scrape(self, link ):
         text = ""
         options = webdriver.ChromeOptions()
-        options.headless = True
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         options.add_argument("--disable-logging")
         options.add_argument("--headless")
