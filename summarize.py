@@ -11,14 +11,15 @@ class Summarizer:
         article = None
         with open("./out/intermediate.txt", 'r', encoding="utf-8") as f:
             filedata = f.readlines()
+            print(type(filedata))
             article = filedata[0].split(". ")
+            print(type(article))
             f.close()
 
         self.sentences = []
         for sentence in article:
-            print(sentence)
             self.sentences.append(sentence.replace("[^a-zA-Z", " ").split(" "))
-        print(self.sentences)
+        self.sentences.pop()
     
     def sentence_similarity(self, sent1, sent2, stop_words=[]):
         sent1 = [w.lower() for w in sent1]
@@ -62,16 +63,13 @@ class Summarizer:
         scores = nx.pagerank(sentence_similarity_graph)
 
         ranked_sentence = sorted(((scores[i], s) for i,s in enumerate(self.sentences)), reverse=True)
-        print("Indexes of top ranked sent are", ranked_sentence)
-        print(f"Enter the number of top results to be summarized\nNote: The bigger the number more the content but lesser the accuracy\nMaximum is {len(ranked_sentence)}:", end='')
-        top_n = int(input())
 
-        for i in tqdm(range(10)):
+        for i in tqdm(range(len(ranked_sentence)//2)):
             summarize_text.append(" ".join(ranked_sentence[i][1]))
 
+        summarize_text=". ".join(summarize_text) + "."
         with open("./out/Output.txt", "w", encoding="utf-8") as f:
-            f.write(". ".join(summarize_text))
-
+            f.write(summarize_text)
 
 if __name__=="__main__":
     ff = Summarizer()
