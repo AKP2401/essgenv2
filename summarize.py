@@ -11,9 +11,7 @@ class Summarizer:
         article = None
         with open("./out/intermediate.txt", 'r', encoding="utf-8") as f:
             filedata = f.readlines()
-            print(type(filedata))
             article = filedata[0].split(". ")
-            print(type(article))
             f.close()
 
         self.sentences = []
