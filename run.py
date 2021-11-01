@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from summarize import Summarizer
 import tqdm
+import os
 
 
 class Run():
@@ -32,6 +33,8 @@ class Run():
         print("Scraping...")
         for i in tqdm.tqdm(range(limit)):
             self.paragraph += self.__scrape(links[i])
+        if not os.path.isdir("out"):
+            os.mkdir("out")
         with open("./out/intermediate.txt", 'w', encoding="utf-8") as f:
             f.write(self.paragraph)
             f.close()
