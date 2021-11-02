@@ -11,20 +11,23 @@ class Run():
         self.paragraph = ""
 
     def __scrape(self, link ):
-        text = ""
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        options.add_argument("--disable-logging")
-        options.add_argument("--headless")
-        options.add_argument("--disable-gpu")
-        driver = webdriver.Chrome(options=options)
-        driver.get(link)
-        para = driver.find_elements(By.TAG_NAME, "p")
+        try:
+            text = ""
+            options = webdriver.ChromeOptions()
+            options.add_experimental_option("excludeSwitches", ["enable-logging"])
+            options.add_argument("--disable-logging")
+            options.add_argument("--headless")
+            options.add_argument("--disable-gpu")
+            driver = webdriver.Chrome(options=options)
+            driver.get(link)
+            para = driver.find_elements(By.TAG_NAME, "p")
 
-        for p_tag in para:
-            text += str(p_tag.text)
-        return text
-
+            for p_tag in para:
+                text += str(p_tag.text)
+            return text
+        except:
+            print("\nPage scrape error")
+            return ""
 
 
     def run(self, topic:str, limit:int=5):
