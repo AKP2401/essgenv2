@@ -9,5 +9,5 @@ The final result can be found in `./out/Output.txt` file.
   * nltk
 
 ## Contributors:
-  * @harsita122
-  * Pranay Agarwal ()
+  * [https://github.com/harsita122](Harsita R)
+  * [https://github.com/Pranay221](Pranay Agarwal)
